@@ -6,6 +6,7 @@ public class Seal : MonoBehaviour, ISwimable
     public SealCameraHandler cameraHandler;
     public SealViewHandler viewHandler;
     public SealWaterPhysicHandler waterHandler;
+    public SealSurfaceMovementHandler surfaceMovementHandler;
 
     private Rigidbody _rb;
 
@@ -14,12 +15,18 @@ public class Seal : MonoBehaviour, ISwimable
         _rb = GetComponent<Rigidbody>();
         waterHandler.Init(_rb);
         swimingHandler.Init(_rb);
+        surfaceMovementHandler.Init(_rb);
         cameraHandler.onDiraction += swimingHandler.GetCameraDiraction;
-        swimingHandler.OnSwim += viewHandler.RotateHead;
+        cameraHandler.onDiraction += surfaceMovementHandler.GetDiraction;
     }
     private void Update()
     {
-        swimingHandler.Update();
+        if (waterHandler.isWater) swimingHandler.Update();
+        else surfaceMovementHandler.Update();
+    }
+
+    private void LateUpdate()
+    {
         cameraHandler.Update();
     }
     public void EnterWater() => waterHandler.EnterWater();

@@ -11,7 +11,7 @@ public class SealCameraHandler
     public Action<Vector3> onDiraction;
 
     [SerializeField] private GameObject camera;
-
+    [SerializeField] private Transform followTarget;
     private Vector3 _cameraRot;
     public void Update()
     {
@@ -22,9 +22,8 @@ public class SealCameraHandler
         _cameraRot.x = Mathf.Clamp(_cameraRot.x, cameraMinRotate, cameraMaxRotate);
 
         camera.transform.rotation = Quaternion.Euler(_cameraRot);
+        camera.transform.position = followTarget.position;
 
         onDiraction?.Invoke(Quaternion.Euler(_cameraRot) * Vector3.forward);
-
-        Debug.DrawRay(camera.transform.position, Quaternion.Euler(_cameraRot) * Vector3.forward * 10f, Color.blue);
     }
 }
