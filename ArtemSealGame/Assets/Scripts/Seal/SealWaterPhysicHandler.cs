@@ -15,6 +15,8 @@ public class SealWaterPhysicHandler
     {
         isWater = true;
         _rb.useGravity = false;
+        _rb.mass = 1.0f;
+        _rb.automaticCenterOfMass = true;
         _rb.angularDamping = 25f;
         _rb.linearDamping = 2.5f;
     }
@@ -22,6 +24,9 @@ public class SealWaterPhysicHandler
     {
         isWater = false;
         _rb.useGravity = true;
+        _rb.mass = 20f;
+        _rb.automaticCenterOfMass = false;
+        _rb.centerOfMass = new Vector3(0f, -1f, -1.5f);
         _rb.angularDamping = 3f;
         _rb.linearDamping = 1.0f;
     }

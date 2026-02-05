@@ -6,12 +6,16 @@ using UnityEngine;
 public class SealSurfaceMovementHandler
 {
     public float groundCheckDistance;
-    public float pushingForce;
+    public float pushingMovementVelocity;
+    public float pushingAngulerVelocity;
     public LayerMask groundLayerMask;
     public float pushColdown;
 
+    private Vector3 boxCenter = new Vector3(0f, -1f, -1f);
+    private Vector3 boxScale = new Vector3(0.7f, 0.5f, 2.5f);
     private bool isGrounded = false;
-    private bool isPushable = true;
+    private bool isLeftPushable = true;
+    private bool isRightPushable = true;
     private Rigidbody _rb;
     private Vector3 _diraction;
 
@@ -26,34 +30,45 @@ public class SealSurfaceMovementHandler
         if (!isGrounded)
             return;
 
-        if (Input.GetKeyDown(KeyCode.A) && isPushable)
-            Push(_rb.transform.right + _rb.transform.position);
-        if (Input.GetKeyDown(KeyCode.D) && isPushable)
-            Push( -_rb.transform.right + _rb.transform.position);
+        Debug.DrawRay(_rb.position + _rb.rotation * _rb.centerOfMass, Vector3.up * 2f, Color.green);
+
+        if (Input.GetKeyDown(KeyCode.A) && isLeftPushable)
+        {
+            Push((Vector3.up * 90f) * Mathf.Deg2Rad);
+            PushingColdown(false);
+        }
+        if (Input.GetKeyDown(KeyCode.D) && isRightPushable)
+        {
+            Push((Vector3.down * 90f) * Mathf.Deg2Rad);
+            PushingColdown(true);
+        }
     }
 
     private void Push(Vector3 axis)
     {
-        _rb.AddForceAtPosition(new Vector3(_diraction.x, 0f, _diraction.z) * pushingForce, axis, ForceMode.Impulse);
-        Debug.Log("push");
-        PushingColdown();
+        Vector3 movementDiraction = _rb.rotation * Vector3.forward;
+        movementDiraction.y = 0;
+        movementDiraction = movementDiraction.normalized;
+        _rb.linearVelocity = movementDiraction * pushingMovementVelocity;
+        _rb.angularVelocity = axis * pushingAngulerVelocity;;
     }
 
     private void GroundChecker()
     {
-        Ray ray = new Ray(_rb.transform.position, Vector3.down);
-
-        if (Physics.RaycastAll(ray, groundCheckDistance, (int)groundLayerMask).Length != 0)
+        if (Physics.CheckBox(boxCenter + _rb.transform.position, boxScale, _rb.rotation, groundLayerMask))
             isGrounded = true;
         else
             isGrounded = false;
     }
-    public void GetDiraction(Vector3 diraction) => _diraction = diraction;
-
-    public async UniTask PushingColdown()
+    public async UniTask PushingColdown(bool isRight)
     {
-        isPushable = false;
+        if (isRight) isRightPushable = false;
+        else isLeftPushable = false;
+
         await UniTask.Delay((int)(pushColdown * 1000f));
-        isPushable = true;
+
+        if (isRight) isRightPushable = true;
+        else isLeftPushable = true;
     }
+    public void GetDiraction(Vector3 diraction) => _diraction = diraction;
 }
