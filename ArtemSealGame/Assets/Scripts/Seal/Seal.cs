@@ -24,6 +24,7 @@ public class Seal : MonoBehaviour, ISwimable
         swimingHandler.Init(_rb);
         surfaceMovementHandler.Init(_rb);
         verticalStabilizer.Init(_rb);
+        cameraHandler.Init(_rb);
     }
 
     private void Update()

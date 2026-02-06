@@ -213,7 +213,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60.000004
+  field of view: 55
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1577,7 +1577,33 @@ MonoBehaviour:
     mouseSensivity: 250
     cameraMinRotate: -90
     cameraMaxRotate: 90
-    camera: {fileID: 488126513}
+    cameraDistancingCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0.017789787
+        outSlope: 0.017789787
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.11358859
+      - serializedVersion: 3
+        time: 40
+        value: 1.4
+        inSlope: 0.0015133322
+        outSlope: 0.0015133322
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.20963784
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    cameraDefaultField: 55
+    cameraTarget: {fileID: 488126513}
+    camera: {fileID: 330585545}
     followTarget: {fileID: 2071537028}
   waterHandler:
     isWater: 0
