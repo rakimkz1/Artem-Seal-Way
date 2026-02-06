@@ -10,17 +10,20 @@ public class SealCameraHandler
     public float cameraMaxRotate;
     public AnimationCurve cameraDistancingCurve;
     public float cameraDefaultField;
+    public float cameraFieldChangeSpeed;
     public Action<Vector3> onDiraction;
 
     [SerializeField] private GameObject cameraTarget;
     [SerializeField] private Camera camera;
     [SerializeField] private Transform followTarget;
+    private float cameraTargetField;
     private Vector3 _cameraRot;
     private Rigidbody _rb;
 
     public void Init(Rigidbody rb)
     {
         _rb = rb;
+        cameraTargetField = cameraDefaultField;
     }
     public void Update()
     {
@@ -32,14 +35,14 @@ public class SealCameraHandler
 
         cameraTarget.transform.rotation = Quaternion.Euler(_cameraRot);
         cameraTarget.transform.position = followTarget.position;
-        CameraDistancingByVelocity();
-
+        
         onDiraction?.Invoke(Quaternion.Euler(_cameraRot) * Vector3.forward);
     }
 
-    private void CameraDistancingByVelocity()
+    public void CameraDistancingByVelocity(bool isInWater)
     {
         float velocityMagnitude = _rb.linearVelocity.magnitude;
-        camera.fieldOfView = cameraDefaultField * cameraDistancingCurve.Evaluate(velocityMagnitude);
+        cameraTargetField = cameraDefaultField * cameraDistancingCurve.Evaluate((isInWater ? velocityMagnitude : 0f));
+        camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, cameraTargetField, cameraFieldChangeSpeed * Time.deltaTime);
     }
 }

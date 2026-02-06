@@ -40,6 +40,7 @@ public class Seal : MonoBehaviour, ISwimable
     private void LateUpdate()
     {
         cameraHandler.Update();
+        cameraHandler.CameraDistancingByVelocity(waterHandler.isWater);
     }
 
     public void EnterWater() => waterHandler.EnterWater();
