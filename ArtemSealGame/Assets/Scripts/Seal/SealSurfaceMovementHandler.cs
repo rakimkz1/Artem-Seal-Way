@@ -34,12 +34,12 @@ public class SealSurfaceMovementHandler
 
         if (Input.GetKeyDown(KeyCode.A) && isLeftPushable)
         {
-            Push((Vector3.up * 90f) * Mathf.Deg2Rad);
+            Push((Vector3.down * 90f) * Mathf.Deg2Rad);
             PushingColdown(false);
         }
         if (Input.GetKeyDown(KeyCode.D) && isRightPushable)
         {
-            Push((Vector3.down * 90f) * Mathf.Deg2Rad);
+            Push((Vector3.up * 90f) * Mathf.Deg2Rad);
             PushingColdown(true);
         }
     }

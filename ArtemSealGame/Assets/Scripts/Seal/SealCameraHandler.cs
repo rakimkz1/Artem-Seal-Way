@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks.Triggers;
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -18,12 +20,14 @@ public class SealCameraHandler
     [SerializeField] private Transform followTarget;
     private float cameraTargetField;
     private Vector3 _cameraRot;
+    private Vector3 _cameraInitialPos;
     private Rigidbody _rb;
 
     public void Init(Rigidbody rb)
     {
         _rb = rb;
         cameraTargetField = cameraDefaultField;
+        _cameraInitialPos = camera.transform.localPosition;
     }
     public void Update()
     {
@@ -35,6 +39,8 @@ public class SealCameraHandler
 
         cameraTarget.transform.rotation = Quaternion.Euler(_cameraRot);
         cameraTarget.transform.position = followTarget.position;
+
+        CheckCameraOverlap();
         
         onDiraction?.Invoke(Quaternion.Euler(_cameraRot) * Vector3.forward);
     }
@@ -44,5 +50,20 @@ public class SealCameraHandler
         float velocityMagnitude = _rb.linearVelocity.magnitude;
         cameraTargetField = cameraDefaultField * cameraDistancingCurve.Evaluate((isInWater ? velocityMagnitude : 0f));
         camera.fieldOfView = Mathf.MoveTowards(camera.fieldOfView, cameraTargetField, cameraFieldChangeSpeed * Time.deltaTime);
+    }
+    public void CheckCameraOverlap()
+    {
+        Ray ray = new Ray(cameraTarget.transform.position, cameraTarget.transform.rotation * _cameraInitialPos);
+        Debug.DrawRay(cameraTarget.transform.position, cameraTarget.transform.rotation * _cameraInitialPos, Color.blue);
+        RaycastHit[] hit = Physics.RaycastAll(ray, Vector3.Magnitude(_cameraInitialPos));
+        camera.transform.localPosition = _cameraInitialPos;
+        foreach(var hitItem in hit)
+        {
+            if(hitItem.collider != null && hitItem.collider.gameObject.tag != "Player")
+            {
+                camera.transform.position = hitItem.point;
+                break;
+            }
+        }
     }
 }

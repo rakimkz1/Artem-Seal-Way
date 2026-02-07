@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/SealBurrow.unity
+    guid: a3b7fe780bbb71d41a0e9990fa12b398
+  - enabled: 1
+    path: Assets/Scenes/TestCatScene.unity
+    guid: 20e70774ff8924b45b6841701751df39
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
