@@ -8,6 +8,9 @@ public class SealSurfaceMovementHandler
     public float groundCheckDistance;
     public float pushingMovementVelocity;
     public float pushingAngulerVelocity;
+    public float slicePushingMovementVelocity;
+    public float slicePushingAngulerVelocity;
+    public float slicingMaxVelocity;
     public LayerMask groundLayerMask;
     public float pushColdown;
 
@@ -17,11 +20,13 @@ public class SealSurfaceMovementHandler
     private bool isLeftPushable = true;
     private bool isRightPushable = true;
     private Rigidbody _rb;
+    private SealSlideHandler _slideHandler;
     private Vector3 _diraction;
 
-    public void Init(Rigidbody rb)
+    public void Init(Rigidbody rb, SealSlideHandler slideHandler)
     {
         _rb = rb;
+        _slideHandler = slideHandler;
     }
 
     public void Update()
@@ -49,8 +54,17 @@ public class SealSurfaceMovementHandler
         Vector3 movementDiraction = _rb.rotation * Vector3.forward;
         movementDiraction.y = 0;
         movementDiraction = movementDiraction.normalized;
-        _rb.linearVelocity = movementDiraction * pushingMovementVelocity;
-        _rb.angularVelocity = axis * pushingAngulerVelocity;;
+
+        if (_slideHandler.isSliding == false)
+        {
+            _rb.linearVelocity = movementDiraction * pushingMovementVelocity;
+            _rb.angularVelocity = axis * pushingAngulerVelocity; ;
+        }
+        else
+        {
+            _rb.linearVelocity = Vector3.ClampMagnitude(_rb.linearVelocity + movementDiraction * slicePushingMovementVelocity, slicingMaxVelocity);
+            _rb.angularVelocity = axis * slicePushingAngulerVelocity;
+        }
     }
 
     private void GroundChecker()

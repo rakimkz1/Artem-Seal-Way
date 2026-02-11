@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class Seal : MonoBehaviour, ISwimable
+public class Seal : MonoBehaviour, ISwimable, ISlidables
 {
     public SealSwimingHandler swimingHandler;
     public SealCameraHandler cameraHandler;
     public SealWaterPhysicHandler waterHandler;
     public SealSurfaceMovementHandler surfaceMovementHandler;
     public SealVerticalStabilizer verticalStabilizer;
+    public SealSlideHandler slideHandler;
 
     private Rigidbody _rb;
 
@@ -22,9 +23,10 @@ public class Seal : MonoBehaviour, ISwimable
     {
         waterHandler.Init(_rb);
         swimingHandler.Init(_rb);
-        surfaceMovementHandler.Init(_rb);
         verticalStabilizer.Init(_rb);
         cameraHandler.Init(_rb);
+        slideHandler.Init(_rb);
+        surfaceMovementHandler.Init(_rb, slideHandler);
     }
 
     private void Update()
@@ -45,4 +47,8 @@ public class Seal : MonoBehaviour, ISwimable
 
     public void EnterWater() => waterHandler.EnterWater();
     public void ExitWater() => waterHandler.ExitWater();
+
+    public void OnSlideSurfaceEnter() => slideHandler.OnSlideEnter();
+
+    public void OnSlideSurfaceExit() => slideHandler.OnSlideExit();
 }

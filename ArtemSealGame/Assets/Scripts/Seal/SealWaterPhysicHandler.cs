@@ -28,6 +28,6 @@ public class SealWaterPhysicHandler
         _rb.automaticCenterOfMass = false;
         _rb.centerOfMass = new Vector3(0f, -1f, -1.5f);
         _rb.angularDamping = 3f;
-        _rb.linearDamping = 1.0f;
+        _rb.linearDamping = 0.6f;
     }
 }
