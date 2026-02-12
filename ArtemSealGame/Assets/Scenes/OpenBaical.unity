@@ -5207,6 +5207,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1903968594}
     - target: {fileID: 796801417890164704, guid: 8d7f46dcac8b521479ef748e021bec64, type: 3}
+      propertyPath: cameraHandler.cameraMask.m_Bits
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 796801417890164704, guid: 8d7f46dcac8b521479ef748e021bec64, type: 3}
       propertyPath: surfaceMovementHandler.pushingMovementVelocity
       value: 7.5
       objectReference: {fileID: 0}
@@ -5289,10 +5293,6 @@ PrefabInstance:
     - target: {fileID: 8267140672226426774, guid: 8d7f46dcac8b521479ef748e021bec64, type: 3}
       propertyPath: m_TagString
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8439135499338351383, guid: 8d7f46dcac8b521479ef748e021bec64, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

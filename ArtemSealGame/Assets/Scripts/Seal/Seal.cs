@@ -8,6 +8,7 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables
     public SealSurfaceMovementHandler surfaceMovementHandler;
     public SealVerticalStabilizer verticalStabilizer;
     public SealSlideHandler slideHandler;
+    public SealPhysicHandler physicHandler; 
 
     private Rigidbody _rb;
 
@@ -21,7 +22,9 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables
 
     private void FacadInitialize()
     {
-        waterHandler.Init(_rb);
+        physicHandler = new SealPhysicHandler();
+        physicHandler.Init(_rb);
+        waterHandler.Init(_rb, physicHandler);
         swimingHandler.Init(_rb);
         verticalStabilizer.Init(_rb);
         cameraHandler.Init(_rb);
@@ -31,12 +34,19 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables
 
     private void Update()
     {
-        if (waterHandler.isWater) swimingHandler.Update();
+        if (waterHandler.isWater)
+        {
+            swimingHandler.Update();
+        }
         else
         {
             surfaceMovementHandler.Update();
             verticalStabilizer.Update();
         }
+    }
+    private void FixedUpdate()
+    {
+        physicHandler.FixedUpdate();
     }
 
     private void LateUpdate()
@@ -47,8 +57,6 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables
 
     public void EnterWater() => waterHandler.EnterWater();
     public void ExitWater() => waterHandler.ExitWater();
-
     public void OnSlideSurfaceEnter() => slideHandler.OnSlideEnter();
-
     public void OnSlideSurfaceExit() => slideHandler.OnSlideExit();
 }
