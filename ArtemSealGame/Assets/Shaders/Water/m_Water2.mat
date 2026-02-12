@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: m_Water2
+  m_Shader: {fileID: -6465566751694194690, guid: 076aaccf01da5c24e999f06982dc0775, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _RefractionMap:
+        m_Texture: {fileID: 2800000, guid: 0d0806c32989afc48b883ffe7a7e5fd5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Depth: 5.5
+    - _FoamAmount: 17.91
+    - _FoamCutoff: 20.7
+    - _FoamSpeed: 3.13
+    - _FoamStrength: -34.3
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _RefractionSpeed: 0.004
+    - _RefractionStrength: 1.94
+    - _WaveAmplitude: 0.06
+    - _WaveFrequency: 10.88
+    - _WaveSpeed: 4.64
+    - _smoothness: 0.84
+    m_Colors:
+    - _FoamColor: {r: 0, g: 0, b: 0, a: 0.4392157}
+    - _FoamScale: {r: 30.56, g: 76.6, b: 0, a: 0}
+    - _RefractionScale: {r: 0.02, g: 0.04, b: 0, a: 0}
+    - _SurfaceColor: {r: 0.4592879, g: 0.53590554, b: 0.96981126, a: 1}
+    - _UnderWaterColor: {r: 1, g: 0.9389368, b: 0.8, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
+--- !u!114 &1521146475861993322
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  version: 10
