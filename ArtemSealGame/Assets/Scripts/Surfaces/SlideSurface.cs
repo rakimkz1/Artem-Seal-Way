@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class SlideSurface : MonoBehaviour
 {
-    
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject != null && other.gameObject.TryGetComponent(out ISlidables slidables))
+        if (other.gameObject != null && other.gameObject.TryGetComponent(out ISlidables slidables))
         {
             slidables.OnSlideSurfaceEnter();
         }

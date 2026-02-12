@@ -366,9 +366,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swimingHandler:
     acelaration: 26
-    sprintAcelaration: 80
+    sprintAcelaration: 55
     maxSpeed: 16
-    maxSprintSpeed: 30
+    maxSprintSpeed: 25
     maxRotateSpeed: 10
     rotationGain: 35
     isSprinting: 0
@@ -405,18 +405,28 @@ MonoBehaviour:
     cameraTarget: {fileID: 0}
     camera: {fileID: 0}
     followTarget: {fileID: 6916110879498728128}
+    cameraMask:
+      serializedVersion: 2
+      m_Bits: 4294967295
   waterHandler:
     isWater: 0
+    changingSpeed: 0
   surfaceMovementHandler:
     groundCheckDistance: 1.6
     pushingMovementVelocity: 6.5
     pushingAngulerVelocity: 2.5
+    slicePushingMovementVelocity: 6.5
+    slicePushingAngulerVelocity: 2.2
+    slicingMaxVelocity: 20
     groundLayerMask:
       serializedVersion: 2
       m_Bits: 64
     pushColdown: 0.2
   verticalStabilizer:
     rotateSpeed: 0.1
+  slideHandler:
+    isSliding: 0
+    slidePhysicMaterial: {fileID: 13400000, guid: 8c63254af3adc2b48be661cb5a34b372, type: 2}
 --- !u!54 &8439135499338351383
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -457,7 +467,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -478,7 +488,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -714,14 +724,14 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.004
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.008
+  m_Center: {x: 0, y: 0.005, z: 0}
 --- !u!1 &2427933179082322521 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6902436232679551134, guid: f2b14c8936f854044a9eb458be298177, type: 3}
@@ -740,13 +750,13 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.004
+  m_Radius: 0.005
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &2676756247277197022 stripped
 Transform:
@@ -771,13 +781,13 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.004
+  m_Radius: 0.0075
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5213472689581830983 stripped
 GameObject:
@@ -797,13 +807,13 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.004
+  m_Radius: 0.007
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &6427084657558085693 stripped
 Transform:

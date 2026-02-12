@@ -18,6 +18,7 @@ public class SealCameraHandler
     [SerializeField] private GameObject cameraTarget;
     [SerializeField] private Camera camera;
     [SerializeField] private Transform followTarget;
+    [SerializeField] private LayerMask cameraMask;
     private float cameraTargetField;
     private Vector3 _cameraRot;
     private Vector3 _cameraInitialPos;
@@ -55,7 +56,7 @@ public class SealCameraHandler
     {
         Ray ray = new Ray(cameraTarget.transform.position, cameraTarget.transform.rotation * _cameraInitialPos);
         Debug.DrawRay(cameraTarget.transform.position, cameraTarget.transform.rotation * _cameraInitialPos, Color.blue);
-        RaycastHit[] hit = Physics.RaycastAll(ray, Vector3.Magnitude(_cameraInitialPos));
+        RaycastHit[] hit = Physics.RaycastAll(ray, Vector3.Magnitude(_cameraInitialPos),cameraMask, QueryTriggerInteraction.Ignore);
         camera.transform.localPosition = _cameraInitialPos;
         foreach(var hitItem in hit)
         {
