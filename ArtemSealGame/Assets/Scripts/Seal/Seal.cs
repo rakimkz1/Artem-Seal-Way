@@ -23,6 +23,7 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables
     private void FacadInitialize()
     {
         physicHandler = new SealPhysicHandler();
+        waterHandler = new SealWaterPhysicHandler();
         physicHandler.Init(_rb);
         waterHandler.Init(_rb, physicHandler);
         swimingHandler.Init(_rb);

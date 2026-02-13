@@ -1,12 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
 public class SealWaterPhysicHandler
 {
     public bool isWater;
-    public float changingSpeed;
-    public float waterGravityChangeSpeed;
     private Rigidbody _rb;
 
     private Vector3 _targetGravition = Physics.gravity;
@@ -35,9 +32,5 @@ public class SealWaterPhysicHandler
         _rb.centerOfMass = new Vector3(0f, -1f, -1.5f);
         _rb.angularDamping = 3f;
         _rb.linearDamping = 0.6f;
-    }
-    public void Update()
-    {
-        _physicHandler.gravitionForce = Vector3.MoveTowards(_physicHandler.gravitionForce, _targetGravition, changingSpeed * Time.deltaTime);
     }
 }

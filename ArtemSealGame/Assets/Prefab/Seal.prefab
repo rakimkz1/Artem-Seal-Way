@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8148475369735753410}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TailLimits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9124898056409758361}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5657153072397078835}
   - component: {fileID: 71205808101332017}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TailLimiter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3690195892189328622}
   - component: {fileID: 1845029595806061487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Rig 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9180119342929844758}
   - component: {fileID: 6403080092762888998}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Damp4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095545919833410143}
   - component: {fileID: 5974213241362193470}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Damp2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7542696813594055983}
   - component: {fileID: 7605261495754192867}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Damp1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,9 +329,9 @@ GameObject:
   - component: {fileID: 8439135499338351383}
   - component: {fileID: 5509415329297475468}
   - component: {fileID: 6769050652891296806}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Seal
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
     acelaration: 26
     sprintAcelaration: 55
     maxSpeed: 16
-    maxSprintSpeed: 25
+    maxSprintSpeed: 24
     maxRotateSpeed: 10
     rotationGain: 35
     isSprinting: 0
@@ -408,9 +408,6 @@ MonoBehaviour:
     cameraMask:
       serializedVersion: 2
       m_Bits: 4294967295
-  waterHandler:
-    isWater: 0
-    changingSpeed: 0
   surfaceMovementHandler:
     groundCheckDistance: 1.6
     pushingMovementVelocity: 6.5
@@ -505,7 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4122814867184326117}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -539,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4067407036636765178}
   - component: {fileID: 664901164599461949}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Damp3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3627662656526759908}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TailDamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,9 +660,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4388680750337458582, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -4388680750337458582, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: -2408986728065041657, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2408986728065041657, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f2b14c8936f854044a9eb458be298177, type: 3}
       propertyPath: m_Name
       value: BaseSealModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900777791675298176, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3900777791675298176, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902436232679551134, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6902436232679551134, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905609870639353253, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905609870639353253, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7036213049465896255, guid: f2b14c8936f854044a9eb458be298177, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
