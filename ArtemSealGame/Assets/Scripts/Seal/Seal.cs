@@ -56,10 +56,10 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables, IFlowable
         cameraHandler.CameraDistancingByVelocity(waterHandler.isWater);
     }
 
-    public void EnterWater() => waterHandler.EnterWater();
-    public void ExitWater() => waterHandler.ExitWater();
-    public void OnSlideSurfaceEnter() => slideHandler.OnSlideEnter();
-    public void OnSlideSurfaceExit() => slideHandler.OnSlideExit();
+    public void EnterWater(WaterZone waterZone) => waterHandler.EnterWater(waterZone);
+    public void ExitWater(WaterZone waterZone) => waterHandler.ExitWater(waterZone);
+    public void OnSlideSurfaceEnter(SlideSurface sliderSurface) => slideHandler.OnSlideEnter(sliderSurface);
+    public void OnSlideSurfaceExit(SlideSurface sliderSurface) => slideHandler.OnSlideExit(sliderSurface);
 
     public void OnFlowZoneEnter(WaterFlowZone flowZone) => physicHandler.AddFlowForce(flowZone);
 

@@ -1,5 +1,5 @@
 ﻿public interface ISwimable
 {
-    public void EnterWater();
-    public void ExitWater();
+    public void EnterWater(WaterZone waterZone);
+    public void ExitWater(WaterZone waterZone);
 }

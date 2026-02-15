@@ -18,7 +18,7 @@ public class SealPhysicHandler
         gravitionForce = Vector3.MoveTowards(gravitionForce, _targetGravity, _gravityChangeSpeed * Time.fixedDeltaTime);
         Vector3 flowForce = Vector3.zero;
         foreach (var flow in flowZoneList)
-            flowForce += flow.FlowForceDirection;
+            flowForce += flow.FlowDirection * flow.FlowForce;
 
         _rb.AddForce(gravitionForce + flowForce, ForceMode.Acceleration);
     }

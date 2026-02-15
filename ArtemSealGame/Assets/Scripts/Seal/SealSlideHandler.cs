@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -9,27 +10,38 @@ public class SealSlideHandler
     private Vector3 _slideDiraction;
     private Rigidbody _rb;
     private Collider[] _colliders; 
+    private List<SlideSurface> _slideSurfaceList = new List<SlideSurface>();
 
     public void Init(Rigidbody rb)
     {
         _rb = rb;
         _colliders = rb.gameObject.GetComponents<Collider>();
     }
-    public void OnSlideEnter()
+    public void OnSlideEnter(SlideSurface sliderSurface)
     {
-        isSliding = true;
-        _rb.angularDamping = 1.5f;
-        _rb.linearDamping = 0f;
-        foreach (var collider in _colliders)
-            collider.material = slidePhysicMaterial;
+        _slideSurfaceList.Add(sliderSurface);
+
+        if (_slideSurfaceList.Count == 1)
+        {
+            isSliding = true;
+            _rb.angularDamping = 1.5f;
+            _rb.linearDamping = 0f;
+            foreach (var collider in _colliders)
+                collider.material = slidePhysicMaterial;
+        }
     }
 
-    public void OnSlideExit()
+    public void OnSlideExit(SlideSurface sliderSurface)
     {
-        isSliding = false;
-        _rb.angularDamping = 3f;
-        _rb.linearDamping = 0.6f;
-        foreach (var collider in _colliders)
-            collider.material = null;
+        _slideSurfaceList.Remove(sliderSurface);
+
+        if (_slideSurfaceList.Count == 0)
+        {
+            isSliding = false;
+            _rb.angularDamping = 3f;
+            _rb.linearDamping = 0.6f;
+            foreach (var collider in _colliders)
+                collider.material = null;
+        }
     }
 }

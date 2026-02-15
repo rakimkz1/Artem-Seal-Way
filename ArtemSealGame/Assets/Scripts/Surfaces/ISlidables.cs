@@ -1,7 +1,7 @@
 using UnityEngine;
 public interface ISlidables
 {
-    public void OnSlideSurfaceEnter();
+    public void OnSlideSurfaceEnter(SlideSurface sliderSurface);
 
-    public void OnSlideSurfaceExit();
+    public void OnSlideSurfaceExit(SlideSurface sliderSurface);
 }

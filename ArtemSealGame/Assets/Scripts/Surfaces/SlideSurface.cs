@@ -6,14 +6,14 @@ public class SlideSurface : MonoBehaviour
     {
         if (other.gameObject != null && other.gameObject.TryGetComponent(out ISlidables slidables))
         {
-            slidables.OnSlideSurfaceEnter();
+            slidables.OnSlideSurfaceEnter(this);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject != null && other.gameObject.TryGetComponent(out ISlidables slidables))
         {
-            slidables.OnSlideSurfaceExit();
+            slidables.OnSlideSurfaceExit(this);
         }
     }
 }
