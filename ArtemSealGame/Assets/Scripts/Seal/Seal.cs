@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Seal : MonoBehaviour, ISwimable, ISlidables
+public class Seal : MonoBehaviour, ISwimable, ISlidables, IFlowable
 {
     public SealSwimingHandler swimingHandler;
     public SealCameraHandler cameraHandler;
@@ -60,4 +60,8 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables
     public void ExitWater() => waterHandler.ExitWater();
     public void OnSlideSurfaceEnter() => slideHandler.OnSlideEnter();
     public void OnSlideSurfaceExit() => slideHandler.OnSlideExit();
+
+    public void OnFlowZoneEnter(WaterFlowZone flowZone) => physicHandler.AddFlowForce(flowZone);
+
+    public void OnFlowZoneExit(WaterFlowZone flowZone) => physicHandler.RemoveFlowForce(flowZone);
 }
