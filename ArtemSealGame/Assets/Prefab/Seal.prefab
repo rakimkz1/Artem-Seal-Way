@@ -419,8 +419,11 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 64
     pushColdown: 0.2
-  verticalStabilizer:
-    rotateSpeed: 0.1
+  bodyStabilizer:
+    verticalRotateSpeed: 1
+    velocityRotateSpeed: 0.6
+    velocityProportion: 0.4
+    maxAngleSpeed: 0.8
   slideHandler:
     isSliding: 0
     slidePhysicMaterial: {fileID: 13400000, guid: 8c63254af3adc2b48be661cb5a34b372, type: 2}

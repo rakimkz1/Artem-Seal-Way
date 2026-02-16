@@ -70,6 +70,11 @@ public class SealSwimingHandler
         Vector3 desiredAngularVelocity = axis * angleRad * rotationGain;
         _rb.angularVelocity = Vector3.ClampMagnitude(desiredAngularVelocity, maxRotateSpeed);
     }
-
     public void GetCameraDiraction(Vector3 diraction) => _cameraDiraction = diraction;
+    public Vector3 GetMovementDiraction()
+    {
+        Vector3 diraction = Vector3.ClampMagnitude(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")), 1f);
+        diraction = Quaternion.LookRotation(_cameraDiraction, Vector3.up) * diraction;
+        return diraction;
+    }
 }

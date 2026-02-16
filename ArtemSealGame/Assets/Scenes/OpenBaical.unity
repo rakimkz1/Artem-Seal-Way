@@ -5316,6 +5316,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1098480133}
     - target: {fileID: 796801417890164704, guid: 8d7f46dcac8b521479ef748e021bec64, type: 3}
+      propertyPath: bodyStabilizer.rotateSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 796801417890164704, guid: 8d7f46dcac8b521479ef748e021bec64, type: 3}
       propertyPath: cameraHandler.cameraTarget
       value: 
       objectReference: {fileID: 1903968594}

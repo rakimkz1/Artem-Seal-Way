@@ -6,7 +6,7 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables, IFlowable
     public SealCameraHandler cameraHandler;
     public SealWaterPhysicHandler waterHandler;
     public SealSurfaceMovementHandler surfaceMovementHandler;
-    public SealVerticalStabilizer verticalStabilizer;
+    public SealBodyStabilizer bodyStabilizer;
     public SealSlideHandler slideHandler;
     public SealPhysicHandler physicHandler; 
 
@@ -27,7 +27,7 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables, IFlowable
         physicHandler.Init(_rb);
         waterHandler.Init(_rb, physicHandler);
         swimingHandler.Init(_rb);
-        verticalStabilizer.Init(_rb);
+        bodyStabilizer.Init(_rb);
         cameraHandler.Init(_rb);
         slideHandler.Init(_rb);
         surfaceMovementHandler.Init(_rb, slideHandler);
@@ -42,8 +42,11 @@ public class Seal : MonoBehaviour, ISwimable, ISlidables, IFlowable
         else
         {
             surfaceMovementHandler.Update();
-            verticalStabilizer.Update();
+            //bodyStabilizer.VerticalStabilizer();
         }
+
+        //if (surfaceMovementHandler.isGrounded == false && waterHandler.isWater == false || waterHandler.isWater == true && swimingHandler.GetMovementDiraction() == Vector3.zero)
+        //    bodyStabilizer.RotateToVelocity();
     }
     private void FixedUpdate()
     {

@@ -16,7 +16,7 @@ public class SealSurfaceMovementHandler
 
     private Vector3 boxCenter = new Vector3(0f, -1f, -1f);
     private Vector3 boxScale = new Vector3(0.7f, 0.5f, 2.5f);
-    private bool isGrounded = false;
+    public bool isGrounded { get; set; }
     private bool isLeftPushable = true;
     private bool isRightPushable = true;
     private Rigidbody _rb;
